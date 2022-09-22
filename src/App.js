@@ -1,16 +1,19 @@
-import './App.css';
-import TaskList from './components/TaskList';
-import TaskForm from './components/TaskForm';
+import "./App.css";
+import TaskList from "./components/TaskList";
+import TaskForm from "./components/TaskForm";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
-    return (
-        <div className="App">
-            <h1> Hello World</h1>
-
-            <TaskForm />
-            <TaskList />
-        </div>
-    );
+  return (
+    <div className="App">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<TaskList />} />
+          <Route path="/create-task" element={<TaskForm />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;
