@@ -1,19 +1,27 @@
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { deleteTask } from "../features/counter/taskSlice";
 
 function TaskList() {
-    const tasks = useSelector((state) => state.tasks);
+  const tasks = useSelector((state) => state.tasks);
 
-    console.log(tasks);
-    return (
-        <div>
-            {tasks.map((task) => (
-                <div key={task.id}>
-                    <h3>{task.title}</h3>
-                    <p>{task.description}</p>
-                </div>
-            ))}
+  const dispatch = useDispatch();
+
+  const handleDelete = (id) => {
+    dispatch(deleteTask(id));
+  };
+
+  return (
+    <div>
+      {tasks.map((task) => (
+        <div key={task.id}>
+          <h3>{task.title}</h3>
+          <p>{task.description}</p>
+          <button onClick={() => handleDelete(task.id)}>Delete</button>
         </div>
-    );
+      ))}
+    </div>
+  );
 }
 
 export default TaskList;
