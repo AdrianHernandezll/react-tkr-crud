@@ -45,7 +45,13 @@ const TaskForm = () => {
   }, [params, tasks]);
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={handleSubmit}
+      className="bg-zinc-800 max-w-md max-h-md p-4 mb-2 md:container md:mx-auto"
+    >
+      <label htmlFor="title" className="text-sm block font-bold text-center">
+        Task:
+      </label>
       <input
         type="text"
         name="title"
@@ -53,7 +59,12 @@ const TaskForm = () => {
         onChange={handleChange}
         value={task.title}
       />
-
+      <label
+        htmlFor="description"
+        className="text-sm block font-bold text-center"
+      >
+        Description
+      </label>
       <textarea
         name="description"
         placeholder="description"
@@ -61,7 +72,9 @@ const TaskForm = () => {
         value={task.description}
       ></textarea>
 
-      <button>Save</button>
+      <button className="bg-indigo-500 block px-2 py-1 w-full mt-2">
+        Save
+      </button>
     </form>
   );
 };
